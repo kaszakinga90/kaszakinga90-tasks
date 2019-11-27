@@ -6,8 +6,7 @@ echo script has errors - breaking work
 goto fail
 
 :browser
-start chrome.exe "http://localhost:8080/crud/v1/task/getTasks"
-timeout 30
+start chrome "http://localhost:8080/crud/v1/task/getTasks"
 if "%ERRORLEVEL%" == "0" goto end
 echo.
 echo Browser cannot open.
