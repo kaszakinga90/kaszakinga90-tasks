@@ -44,7 +44,7 @@ public class TrelloController {
 
         });
 
-        return new ArrayList<>();
+        return trelloBoards;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
