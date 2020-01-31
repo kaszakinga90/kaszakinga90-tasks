@@ -20,24 +20,17 @@ public class SimpleEmailService {
     private JavaMailSender javaMailSender;
 
     public void send(final Mail mail) {
-
         LOGGER.info("Starting email preparation...");
-
         try {
-
             SimpleMailMessage mailMessage = createMailMessage(mail);
             javaMailSender.send(mailMessage);
-
             LOGGER.info("Email has been sent.");
-
         } catch (MailException e) {
             LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
-
         }
     }
 
     private SimpleMailMessage createMailMessage(final Mail mail) {
-
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         Optional.ofNullable(mail.getToCc()).ifPresent(mailMessage::setCc);
