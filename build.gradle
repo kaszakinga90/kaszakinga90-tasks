@@ -29,6 +29,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-mail:2.2.2.RELEASE')
 
 	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
 	//swagger
 	compile('io.springfox:springfox-swagger2:2.7.0')
