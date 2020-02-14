@@ -24,7 +24,6 @@ public class ScheduledMailService {
         schedulerContext.setVariable("tasks_url", "http://localhost:8888/tasks_frontend/");
         schedulerContext.setVariable("button", "Visit website");
         schedulerContext.setVariable("admin_name", adminConfig.getAdminName());
-        schedulerContext.setVariable("preview_message", "This message is auto-repeated by scheduler!");
         schedulerContext.setVariable("goodbye_message", "See you soon!");
         schedulerContext.setVariable("company_name", adminConfig.getCompanyName());
         schedulerContext.setVariable("company_goal", adminConfig.getCompanyGoal());
