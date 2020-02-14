@@ -16,7 +16,7 @@ import java.util.Optional;
 @Service
 public class SimpleEmailService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleEmailService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -25,10 +25,10 @@ public class SimpleEmailService {
     private MailCreatorService mailCreatorService;
 
     public void send(final Mail mail) {
-        LOGGER.info("Starting email preparation...");
+        LOGGER.info("Email preparation has started");
         try {
             javaMailSender.send(createMimeMessage(mail));
-            LOGGER.info("Email has been sent.");
+            LOGGER.info("Email has been send.");
         } catch (MailException e) {
             LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
         }
@@ -39,7 +39,7 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
         };
     }
 
@@ -51,5 +51,4 @@ public class SimpleEmailService {
         mailMessage.setText(mail.getMessage());
         return mailMessage;
     }
-
 }
